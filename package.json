@@ -1,0 +1,22 @@
+{
+  "name": "mysqlstudy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/PracticeEveryday/MySQLStudy.git",
+  "author": "DongHyun Kim <developerforus@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mysql": "^2.18.1"
+  },
+  "scripts": {
+    "start": "nodemon index.js --exec babel-node"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
+  }
+}
