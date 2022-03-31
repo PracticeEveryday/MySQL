@@ -1,4 +1,4 @@
-import { UserModel } from "../db/User";
+import { UserModel } from "../db";
 
 class registerService {
   static create = async ({ email, name, description, password }) => {
