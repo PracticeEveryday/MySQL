@@ -1,10 +1,12 @@
-import { UserModel } from "../db";
+import crypto from "crypto";
 
 class registerService {
-  static create = async ({ email, name, description, password }) => {
-    const newUserData = [email, name, description, password];
-    const newUser = await UserModel.create(newUserData);
-    return newUser;
+  static hashPassword = (password) => {
+    const hashedPassword = crypto
+      .createHash("md5")
+      .update(password)
+      .digest("hex");
+    return hashedPassword;
   };
 }
 

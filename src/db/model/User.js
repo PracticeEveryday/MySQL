@@ -15,6 +15,23 @@ class UserModel {
 
     return newUser;
   };
+
+  static findByEmail = ({ email }) => {
+    console.log(email);
+    let sql = `SELECT * FROM user WHERE email = '${email}'`;
+    let result = [];
+    const User = db.query(sql, (err, results) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(results);
+        result = results;
+      }
+    });
+    console.log("result", result);
+    console.log(User);
+    return result;
+  };
 }
 
 export { UserModel };
