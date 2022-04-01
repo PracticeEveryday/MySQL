@@ -1,17 +1,23 @@
 import fs from "fs";
 import mysql from "mysql";
 
-const database = fs.readFileSync("./database.json");
-const conf = JSON.parse(database);
+// const data = fs.readFileSync("./database.json");
+// const conf = JSON.parse(data);
 
 const db = mysql.createConnection({
-  host: conf.host,
-  user: conf.user,
-  password: conf.password,
-  port: conf.port,
-  database: conf.database,
+  host: "localhost",
+  user: "root",
+  password: "111111",
+  post: "3306",
+  database: "mysql_loginproject",
 });
 
-db.connect();
+db.connect((err) => {
+  if (err) {
+    console.log("mysql connection error :" + err);
+  } else {
+    console.log("mysql is connected successfully.");
+  }
+});
 
 export { db };

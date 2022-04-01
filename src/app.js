@@ -8,5 +8,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(indexRouter);
+app.use(registerRouter);
 
 export { app };
