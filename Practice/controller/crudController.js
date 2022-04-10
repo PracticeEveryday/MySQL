@@ -62,6 +62,25 @@ const crudController = {
       next(error);
     }
   },
+  addMovie: async (req, res, next) => {
+    try {
+      const { title, person, genre, runningtime } = req.body;
+      const movie_id = req.params.movie_id;
+      // INSERT INTO movietest.movie (movie_id, title, person, genre, runningtime) VALUES(7, "스파이더맨 노웨이홈", "톰 홀랜드", "액션", 148);
+      const sql = `INSERT INTO movietest.movie (movie_id, title, person, genre, runningtime) 
+                   VALUES(${movie_id}, "${title}", "${person}", "${genre}", ${runningtime})`;
+      await db.query(sql, (error, results) => {
+        if (error) {
+          throw new Error(error);
+        }
+        res.status(200).json({
+          results,
+        });
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 export { crudController };
