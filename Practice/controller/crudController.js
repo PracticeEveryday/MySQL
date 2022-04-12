@@ -66,6 +66,7 @@ const crudController = {
     try {
       const { title, person, genre, runningtime } = req.body;
       const movie_id = req.params.movie_id;
+      console.log(title, person, genre, runningtime);
       // INSERT INTO movietest.movie (movie_id, title, person, genre, runningtime) VALUES(7, "스파이더맨 노웨이홈", "톰 홀랜드", "액션", 148);
       const sql = `INSERT INTO movietest.movie (movie_id, title, person, genre, runningtime) 
                    VALUES(${movie_id}, "${title}", "${person}", "${genre}", ${runningtime})`;
@@ -87,6 +88,23 @@ const crudController = {
       const movie_id = req.params.movie_id;
       // DELETE FROM movietest.movie WHERE movie_id=6;
       const sql = `DELETE FROM movietest.movie WHERE movie_id=${movie_id};`;
+      db.query(sql, (error, results) => {
+        if (error) {
+          throw new Error(error);
+        }
+        res.status(200).json(results);
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  findCondition: async (req, res, next) => {
+    try {
+      const { column, condition } = req.body;
+      console.log(column, condition);
+      // SELECT * FROM movietest.movie WHERE genre = "범죄";
+      const sql = `SELECT * FROM movietest.movie WHERE ${column} = "${condition}"`;
       db.query(sql, (error, results) => {
         if (error) {
           throw new Error(error);
