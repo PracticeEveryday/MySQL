@@ -81,6 +81,22 @@ const crudController = {
       next(error);
     }
   },
+
+  deleteMovie: async (req, res, next) => {
+    try {
+      const movie_id = req.params.movie_id;
+      // DELETE FROM movietest.movie WHERE movie_id=6;
+      const sql = `DELETE FROM movietest.movie WHERE movie_id=${movie_id};`;
+      db.query(sql, (error, results) => {
+        if (error) {
+          throw new Error(error);
+        }
+        res.status(200).json(results);
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 export { crudController };
