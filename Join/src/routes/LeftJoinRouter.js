@@ -3,6 +3,6 @@ import { LeftControler } from "../controller/LeftJoinController";
 
 const LeftJoinRouter = Router();
 
-LeftJoinRouter.route("./join/left").get(LeftControler.getLeft);
+LeftJoinRouter.route("/join/left").post(LeftControler.getLeft);
 
 export { LeftJoinRouter };
